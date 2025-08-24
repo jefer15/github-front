@@ -1,0 +1,40 @@
+<div class="p-4">
+  <mat-card class="rounded-2xl shadow-md">
+    <mat-card-content>
+      <div class="flex gap-2 items-center">
+        <mat-form-field class="w-full" appearance="fill">
+          <mat-label>Buscar usuario...</mat-label>
+          <input matInput [formControl]="username" />
+        </mat-form-field>
+
+        <button mat-raised-button color="primary" [disabled]="username.invalid" (click)="search()">
+          Buscar
+        </button>
+      </div>
+    </mat-card-content>
+  </mat-card>
+
+  <div *ngIf="users.length" class="mt-6">
+    <h2 class="text-lg font-bold mb-2">Resultados:</h2>
+
+    <mat-card *ngFor="let user of users" class="mb-4 shadow-sm cursor-pointer hover:shadow-md transition"
+      [routerLink]="['/profile', user.login]" [queryParams]="{ score: user.score }">
+      <mat-card-header>
+        <div mat-card-avatar>
+          <img [src]="user.avatar_url" alt="avatar" class="rounded-full w-12 h-12" />
+        </div>
+        <mat-card-title>
+          {{ user.login }}
+        </mat-card-title>
+        <mat-card-subtitle>ID: {{ user.id }}</mat-card-subtitle>
+      </mat-card-header>
+    </mat-card>
+
+    <h3 class="text-md font-semibold mt-6 mb-2">Seguidores de los usuarios</h3>
+    <mat-card>
+      <mat-card-content>
+        <canvas #followersChart></canvas>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

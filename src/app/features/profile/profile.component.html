@@ -1,0 +1,21 @@
+<div class="p-4">
+  <mat-card *ngIf="user" class="max-w-md mx-auto rounded-2xl shadow-md">
+    <mat-card-header>
+      <div mat-card-avatar>
+        <img [src]="user.avatar_url" alt="avatar" class="rounded-full w-16 h-16" />
+      </div>
+      <mat-card-title>{{ user.login }}</mat-card-title>
+      <mat-card-subtitle>ID: {{ user.id }}</mat-card-subtitle>
+    </mat-card-header>
+
+    <mat-card-content class="mt-4 space-y-2">
+      <p><strong>Nombre:</strong> {{ user.name || 'No disponible' }}</p>
+      <p><strong>Repos públicos:</strong> {{ user.public_repos }}</p>
+      <p><strong>Seguidores:</strong> {{ user.followers }}</p>
+      <p><strong>Siguiendo:</strong> {{ user.following }}</p>
+      <p><strong>Ubicación:</strong> {{ user.location || 'N/A' }}</p>
+      <p><strong>Creado en:</strong> {{ user.created_at | date : 'dd/MM/yyyy' }}</p>
+      <p><strong>Tipo de usuario:</strong> {{ user.user_view_type === 'public' ? 'Público' : 'Privado' }}</p>
+    </mat-card-content>
+  </mat-card>
+</div>
