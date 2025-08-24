@@ -5,8 +5,7 @@ import { scoreGuard } from './core/guards/score.guard';
 
 export const routes: Routes = [
   { path: 'user', component: UserComponent },
-  { path: 'profile/:login', component: ProfileComponent },
-  // { path: 'profile/:login', component: ProfileComponent, canActivate: [scoreGuard] },
+  { path: 'profile/:login', component: ProfileComponent, canActivate: [scoreGuard] },
   { path: '', pathMatch: 'full', redirectTo: 'user' },
   { path: '**', redirectTo: 'user' },
 ];
